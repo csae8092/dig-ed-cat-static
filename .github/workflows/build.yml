@@ -20,8 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade --upgrade-strategy eager -r requirements.txt
-        ./setup.sh
-    - name: build html data
+    - name: Build the website
       run: |
         python build.py
     - name: Deploy
