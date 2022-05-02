@@ -38,6 +38,7 @@ for i, object in enumerate(df.to_dict(orient='records')):
         f.write(template.render(
                 {
                     "object": item,
+                    "title": object['edition-name']
                 }
             )
         )
