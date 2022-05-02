@@ -1,7 +1,17 @@
 {% extends "templates/partials/base.html" %}
-{% block title%} {{ edition_name }} {% endblock %}
+{% block title%} {{ object.edition_name }} {% endblock %}
 {% block content %}
 <div class="container">
-    <h1>{{ edition_name }}</h1>
+    <h1>{{ object.edition_name }}</h1>
+    <div class="card">
+        <table id="example" class="display" style="width:100%">
+            {% for key, value in object.items() %}
+                <tr>
+                    <th>{{ value.label }}</th>
+                    <hd>{{ value.data }}</hd>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock content %}

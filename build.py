@@ -4,7 +4,7 @@ import jinja2
 import pandas as pd
 from config import EDITIONS
 from slugify import slugify
-
+print('hallo')
 os.makedirs('./html', exist_ok=True)
 for x in glob.glob('./html/*.html'):
     os.unlink(x)
@@ -25,10 +25,22 @@ objects = df.to_dict(orient='records')
 labels = {slugify(x): x for x in df.keys()}
 df.columns = labels.keys()
 template = templateEnv.get_template('./templates/edition.html')
-for i, x in enumerate(df.to_dict(orient='records')):
+for i, object in enumerate(df.to_dict(orient='records')):
     f_name = f"entry-{i+1:003}.html"
+    item = {
+        key: {
+            'label': labels[key],
+            'data': value
+        }
+        for key, value in object.items()
+    }
     with open(f"html/{f_name}", 'w') as f:
-        f.write(template.render(x))
+        f.write(template.render(
+                {
+                    "object": item,
+                }
+            )
+        )
 
 template = templateEnv.get_template('./templates/editions.html')
 with open("./html/editions.html", 'w') as f:
