@@ -131,3 +131,4 @@ dmypy.json
 .pyre/
 play.py
 Untitled.*
+env.secret

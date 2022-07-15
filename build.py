@@ -21,6 +21,8 @@ for x in files:
         f.write(template.render({"objects": {}}))
 
 df = pd.read_csv(EDITIONS).head(-1)
+df = df.astype('str')
+df = df.replace(['nan', ''], 'not provided')
 objects = df.to_dict(orient='records')
 labels = {slugify(x): x for x in df.keys()}
 df.columns = labels.keys()
@@ -35,7 +37,8 @@ for i, object in enumerate(df.to_dict(orient='records')):
         for key, value in object.items()
     }
     with open(f"html/{f_name}", 'w') as f:
-        f.write(template.render(
+        f.write(
+            template.render(
                 {
                     "object": item,
                     "title": object['edition-name']

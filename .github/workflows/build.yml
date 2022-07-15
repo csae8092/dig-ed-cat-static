@@ -7,6 +7,11 @@ jobs:
   build_pages:
     name: Publish Data via GitHub Pages Website
     runs-on: ubuntu-latest
+    env:
+      TYPESENSE_HOST: typesense.acdh-dev.oeaw.ac.at
+      TYPESENSE_PORT: 443
+      TYPESENSE_PROTOCOL: https
+      TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
