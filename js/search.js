@@ -2,7 +2,7 @@
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     server: {
       
-      apiKey: "xyz",
+      apiKey: "9B1PUuRZU5szyFE6HZGRHi19f03aWIql",
       nodes: [
         {
           host: "typesense.acdh-dev.oeaw.ac.at",
