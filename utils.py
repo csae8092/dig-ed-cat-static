@@ -53,7 +53,7 @@ def create_ts_documents(df, facet_fields):
         }
         for key in df.keys():
             if key in facet_fields:
-                doc[key] = [x.strip() for x in row[key].split(';').strip()]
+                doc[key] = [x.strip() for x in row[key].split(';')]
             else:
                 doc[key] = row[key]
         documents.append(doc)
