@@ -82,14 +82,18 @@ for i, object in enumerate(df.to_dict(orient='records')):
                 }
             )
         )
-
+facets = []
+for key, value in labels.items():
+    if key in FACET_FIELDS:
+        facets.append(
+            (key, value)
+        )
 template = templateEnv.get_template('./templates/editions.html')
 with open("./html/editions.html", 'w') as f:
     f.write(
         template.render(
             {
-                'objects': objects,
-                'rows': list(labels.values())
+                'objects': facets,
             }
         )
     )
