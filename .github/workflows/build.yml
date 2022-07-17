@@ -13,6 +13,7 @@ jobs:
       TYPESENSE_PROTOCOL: https
       TYPESENSE_API_KEY: ${{secrets.TYPESENSE_API_KEY}}
       TYPESENSE_TYPESENSE_SEARCH_KEY: 9B1PUuRZU5szyFE6HZGRHi19f03aWIql
+      BUILD_INDEX: TRUE
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
