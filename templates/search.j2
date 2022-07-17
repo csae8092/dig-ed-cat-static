@@ -1,14 +1,15 @@
 {% raw %}
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     server: {
-      apiKey: "9B1PUuRZU5szyFE6HZGRHi19f03aWIql", //production
-      // apiKey: "E8XSLzaDIMQXUSCOyUDY2F2VwHbZ32JU", //dev
+      {% endraw %}
+      apiKey: "{{ ts_search_key }}",
       nodes: [
-        {
-          host: "typesense.acdh-dev.oeaw.ac.at",
-          port: "443",
-          protocol: "https",
-        },
+        {{ '{' }}
+          host: "{{ ts_host }}",
+          port: "{{ ts_port }}",
+          protocol: "{{ ts_protocol }}",
+        {{ '}' }}
+      {% raw %}
       ],
       cacheSearchResultsForSeconds: 2 * 60,
     },

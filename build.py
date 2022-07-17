@@ -9,7 +9,8 @@ from config import (
     TS_CLIENT,
     TS_SCHEMA_NAME,
     MANDATORY_FIELDS,
-    FACET_FIELDS
+    FACET_FIELDS,
+
 )
 
 from utils import make_schema, delete_and_create_schema, create_ts_documents
@@ -104,6 +105,10 @@ with open("./html/js/search.js", 'w') as f:
         template.render(
             {
                 'objects': facets,
+                'ts_search_key': os.environ.get('TYPESENSE_SEARCH_KEY', 'xyz'),
+                'ts_host': os.environ.get('TYPESENSE_HOST', 'xyz'),
+                'ts_port': os.environ.get('TYPESENSE_PORT', '8108'),
+                'ts_protocol': os.environ.get('TYPESENSE_PROTOCOL', 'http')
             }
         )
     )
