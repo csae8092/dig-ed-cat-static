@@ -1,0 +1,18 @@
+{% for x in objects %}
+instantsearch.widgets.refinementList({{ '{' }}
+    container: '#refinement-{{ x[1] }}',
+    attribute: '',
+    searchable: true,
+    searchablePlaceholder: 'Search  {{ x[0] }}',
+    cssClasses: {{ '{' }}
+      searchableInput: 'form-control form-control-sm mb-2 border-light-2',
+      searchableSubmit: 'd-none',
+      searchableReset: 'd-none',
+      showMore: 'btn btn-secondary btn-sm align-content-center',
+      list: 'list-unstyled',
+      count: 'badge ml-2 bg-info',
+      label: 'd-flex align-items-center text-capitalize',
+      checkbox: 'mr-2',
+    {{ '}' }}
+{{ '}' }})
+

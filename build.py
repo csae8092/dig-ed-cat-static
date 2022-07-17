@@ -26,14 +26,14 @@ for x in glob.glob('./html/*.html'):
     # print(f'removing {x}')
 
 
-files = glob.glob('./templates/static/*.html')
+files = glob.glob('./templates/static/*.j2')
 
 print('building static content')
 for x in files:
     template = templateEnv.get_template(x)
     _, tail = os.path.split(x)
     # print(f'rendering {tail}')
-    with open(f'./html/{tail}', 'w') as f:
+    with open(f'./html/{tail.replace(".j2", ".html")}', 'w') as f:
         f.write(template.render({"objects": {}}))
 
 print(f"fetching {EDITIONS}")
@@ -62,7 +62,7 @@ if os.environ.get('BUILD_INDEX'):
     index = TS_CLIENT.collections[TS_SCHEMA_NAME].documents.import_(documents, {'action': 'create'})
     print(f"status of index-process: {index[0]}")
 
-template = templateEnv.get_template('./templates/edition.html')
+template = templateEnv.get_template('./templates/edition.j2')
 for i, object in enumerate(df.to_dict(orient='records')):
     f_name = f"entry-{i+1:003}.html"
     item = {
@@ -88,7 +88,7 @@ for key, value in labels.items():
         facets.append(
             (key, value)
         )
-template = templateEnv.get_template('./templates/editions.html')
+template = templateEnv.get_template('./templates/editions.j2')
 with open("./html/editions.html", 'w') as f:
     f.write(
         template.render(
