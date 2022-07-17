@@ -79,17 +79,17 @@ search.addWidgets([
           button: 'btn'
         }
     }),
-
+{% endraw %}
+{% include 'templates/partials/refinements.j2' %}
+{% raw %}
     instantsearch.widgets.currentRefinements({
       container: '#current-refinements',
       cssClasses: {
         delete: 'btn',
         label: 'badge'
       }
-    })
-{% endraw %}
-{% include 'templates/partials/refinements.j2' %}
-{% raw %}
+    }),
+
 ]);
 
 

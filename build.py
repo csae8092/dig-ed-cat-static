@@ -97,3 +97,13 @@ with open("./html/editions.html", 'w') as f:
             }
         )
     )
+
+template = templateEnv.get_template('./templates/search.j2')
+with open("./html/js/search.js", 'w') as f:
+    f.write(
+        template.render(
+            {
+                'objects': facets,
+            }
+        )
+    )
