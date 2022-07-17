@@ -25,21 +25,21 @@ TS_SCHEMA_NAME = 'dig-ed-cat'
 
 
 MANDATORY_FIELDS = [
-    'edition_name',
+    'edition-name',
     'url'
 ]
 
 FACET_FIELDS = [
     'language',
-    'writing_support',
-    'manager_or_editor',
-    'institution_s',
+    'writing-support',
+    'manager-or-editor',
+    'institution-s',
     'audience',
-    'source_text_translation',
+    'source-text-translation',
     'language',
-    'ocr_or_keyed',
-    'repository_of_source_material_s',
-    'place_of_origin_of_source_material_s',
-    'sponsor_funding_body',
+    'ocr-or-keyed',
+    'repository-of-source-material-s',
+    'place-of-origin-of-source-material-s',
+    'sponsor-funding-body',
     'infrastructure',
 ]

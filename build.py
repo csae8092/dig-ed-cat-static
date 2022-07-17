@@ -44,22 +44,23 @@ objects = df.to_dict(orient='records')
 labels = {slugify(x): x for x in df.keys()}
 df.columns = labels.keys()
 
-print('Typesense Index')
-print(f'defining Typesense collection schema with name: {TS_SCHEMA_NAME}')
-ts_schema = make_schema(df, TS_SCHEMA_NAME, MANDATORY_FIELDS, FACET_FIELDS)
+if os.environ.get('BUILD_INDEX'):
 
-print(f'creating Typesnses Collection with schema {TS_SCHEMA_NAME}')
-cur_schema = delete_and_create_schema(
-    TS_CLIENT, TS_SCHEMA_NAME, ts_schema
-)
-print(f"schema created at {cur_schema['created_at']}")
-print("create documents to index")
-documents = create_ts_documents(df, FACET_FIELDS)
-print(f"created {len(documents)} documents to index")
+    print('Typesense Index')
+    print(f'defining Typesense collection schema with name: {TS_SCHEMA_NAME}')
+    ts_schema = make_schema(df, TS_SCHEMA_NAME, MANDATORY_FIELDS, FACET_FIELDS)
 
-index = TS_CLIENT.collections[TS_SCHEMA_NAME].documents.import_(documents, {'action': 'create'})
-print(f"status of index-process: {index[0]}")
+    print(f'creating Typesnses Collection with schema {TS_SCHEMA_NAME}')
+    cur_schema = delete_and_create_schema(
+        TS_CLIENT, TS_SCHEMA_NAME, ts_schema
+    )
+    print(f"schema created at {cur_schema['created_at']}")
+    print("create documents to index")
+    documents = create_ts_documents(df, FACET_FIELDS)
+    print(f"created {len(documents)} documents to index")
 
+    index = TS_CLIENT.collections[TS_SCHEMA_NAME].documents.import_(documents, {'action': 'create'})
+    print(f"status of index-process: {index[0]}")
 
 template = templateEnv.get_template('./templates/edition.html')
 for i, object in enumerate(df.to_dict(orient='records')):
