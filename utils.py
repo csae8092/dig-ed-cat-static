@@ -49,7 +49,7 @@ def create_ts_documents(df, facet_fields):
     documents = []
     for i, row in df.iterrows():
         doc = {
-            'id': f"{i+1}"
+            'id': f"entry-{i+1:003}.html"
         }
         for key in df.keys():
             if key in facet_fields:
