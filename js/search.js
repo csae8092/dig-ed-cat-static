@@ -42,7 +42,7 @@ search.addWidgets([
         templates: {
           empty: 'No Hits',
           item: `
-              <h4><a href="entry-{{ id }}.html">{{ edition-name }}</a></h4>
+              <h4><a href="{{ id }}">{{ edition-name }}</a></h4>
               <h5><a href="{{ url }}"><span class="badge bg-primary">{{ project }}</span></a></h5>
               <div>
               {{#language}}
@@ -93,9 +93,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -110,9 +111,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -127,9 +129,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -144,9 +147,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -161,9 +165,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -178,9 +183,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -195,9 +201,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -212,9 +219,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -229,9 +237,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -246,9 +255,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -263,9 +273,10 @@ instantsearch.widgets.refinementList({
       searchableReset: 'd-none',
       showMore: 'btn btn-secondary btn-sm align-content-center',
       list: 'list-unstyled',
-      count: 'badge ml-2 bg-info',
-      label: 'd-flex align-items-center text-capitalize',
-      checkbox: 'mr-2',
+      count: 'badge ms-2 bg-info',
+      label: 'd-flex align-items-center',
+      labelText: 'ms-2',
+      checkbox: 'ms-2',
     }
 }),
 
@@ -285,6 +296,7 @@ instantsearch.widgets.refinementList({
 search.addWidgets([
     instantsearch.widgets.configure({
         attributesToSnippet: ['edition-title'],
+        hitsPerPage: 25,
     })
 ]);
 
