@@ -40,7 +40,13 @@
             {% for key, value in object.items() %}
             <tr>
                 <th>{{ value.label }}</th>
-                <td>{{ value.data }}</td>
+                <td>
+                {% if value.data.startswith('http') %}
+                    <a href="{{ value.data }}">{{ value.data }}</a>
+                {% else %}
+                    {{ value.data }}
+                {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </table>
