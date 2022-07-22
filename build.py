@@ -10,7 +10,7 @@ from config import (
     TS_SCHEMA_NAME,
     MANDATORY_FIELDS,
     FACET_FIELDS,
-
+    NO_SEARCH_FIELDS,
 )
 
 from utils import make_schema, delete_and_create_schema, create_ts_documents
@@ -85,7 +85,7 @@ for i, object in enumerate(df.to_dict(orient='records')):
         )
 facets = []
 for key, value in labels.items():
-    if key in FACET_FIELDS:
+    if key not in NO_SEARCH_FIELDS:
         facets.append(
             (key, value)
         )

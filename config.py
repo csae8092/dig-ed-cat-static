@@ -43,3 +43,11 @@ FACET_FIELDS = [
     'sponsor-funding-body',
     'infrastructure',
 ]
+
+NO_SEARCH_FIELDS = [
+    'edition-name',
+    'url',
+    'handle-pid',
+    'budget-rough',
+    'ride-review',
+]
