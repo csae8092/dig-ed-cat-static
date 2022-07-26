@@ -6,6 +6,7 @@ from slugify import slugify
 
 from config import (
     EDITIONS,
+    INSTITUTIONS,
     TS_CLIENT,
     TS_SCHEMA_NAME,
     MANDATORY_FIELDS,
@@ -44,6 +45,32 @@ df = df.replace(['nan', ''], 'not provided')
 objects = df.to_dict(orient='records')
 labels = {slugify(x): x for x in df.keys()}
 df.columns = labels.keys()
+
+print(f"fetching {INSTITUTIONS}")
+inst_df = pd.read_csv(INSTITUTIONS).head(-1)
+inst_df = inst_df.astype('str')
+inst_df = inst_df.replace(['nan', ''], 'not provided')
+
+template = templateEnv.get_template('./templates/institution.j2')
+for i, inst_objects in enumerate(inst_df.to_dict(orient='records')):
+    f_name = f"institution-{i+1:003}.html"
+    item = {
+        key: {
+            'label': key,
+            'data': value
+        }
+        for key, value in inst_objects.items()
+    }
+    with open(f"html/{f_name}", 'w') as f:
+        # print(f"rendering {f_name}")
+        f.write(
+            template.render(
+                {
+                    "object": item,
+                    "title": inst_objects['Institution Name']
+                }
+            )
+        )
 
 if os.environ.get('BUILD_INDEX'):
 
