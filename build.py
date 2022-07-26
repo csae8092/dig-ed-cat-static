@@ -53,6 +53,7 @@ inst_df = inst_df.replace(['nan', ''], 'not provided')
 
 template = templateEnv.get_template('./templates/institution.j2')
 for i, inst_objects in enumerate(inst_df.to_dict(orient='records')):
+
     f_name = f"institution-{i+1:003}.html"
     item = {
         key: {
@@ -61,13 +62,21 @@ for i, inst_objects in enumerate(inst_df.to_dict(orient='records')):
         }
         for key, value in inst_objects.items()
     }
+    previous_entry = None
+    next_entry = None
+    if i > 0:
+        previous_entry = f"institution-{i:003}.html"
+    if i + 1 < len(inst_df):
+        next_entry = f"institution-{i+2:003}.html"
+
     with open(f"html/{f_name}", 'w') as f:
-        # print(f"rendering {f_name}")
         f.write(
             template.render(
                 {
                     "object": item,
-                    "title": inst_objects['Institution Name']
+                    "title": inst_objects['Institution Name'],
+                    "previous_entry": previous_entry,
+                    "next_entry": next_entry
                 }
             )
         )
@@ -100,13 +109,20 @@ for i, object in enumerate(df.to_dict(orient='records')):
         }
         for key, value in object.items()
     }
+    previous_entry = None
+    next_entry = None
+    if i > 0:
+        previous_entry = f"entry-{i:003}.html"
+    if i + 2 <= len(df):
+        next_entry = f"entry-{i+2:003}.html"
     with open(f"html/{f_name}", 'w') as f:
-        # print(f"rendering {f_name}")
         f.write(
             template.render(
                 {
                     "object": item,
-                    "title": object['edition-name']
+                    "title": object['edition-name'],
+                    "previous_entry": previous_entry,
+                    "next_entry": next_entry
                 }
             )
         )

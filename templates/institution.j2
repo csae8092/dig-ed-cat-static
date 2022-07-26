@@ -7,7 +7,9 @@
             <div class="col-md-2">
                 {% if previous_entry %}
                 <h2>
-                    <a href="#">prev</a>
+                    <a href="{{ previous_entry }}" style="float:left">
+                        <i class="bi bi-arrow-left-circle"></i>
+                    </a>
                 </h2>
                 {% endif %}
             </div>
@@ -17,8 +19,9 @@
             <div class="col-md-2">
                 {% if next_entry %}
                 <h2>
-                    <a href="#" style="float:right"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"
-                            title="next edition">next</span></a>
+                    <a href="{{ next_entry }}" style="float:right">
+                        <i class="bi bi-arrow-right-circle"></i>
+                    </a>
                 </h2>
                 {% endif %}
             </div>
