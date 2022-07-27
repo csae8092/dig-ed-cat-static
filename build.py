@@ -12,9 +12,10 @@ from config import (
     MANDATORY_FIELDS,
     FACET_FIELDS,
     NO_SEARCH_FIELDS,
+    M2M
 )
 
-from utils import make_schema, delete_and_create_schema, create_ts_documents
+from utils import make_schema, delete_and_create_schema, create_ts_documents, get_matching_row
 
 templateLoader = jinja2.FileSystemLoader(searchpath=".")
 templateEnv = jinja2.Environment(loader=templateLoader)
@@ -102,6 +103,8 @@ if os.environ.get('BUILD_INDEX'):
 template = templateEnv.get_template('./templates/edition.j2')
 for i, object in enumerate(df.to_dict(orient='records')):
     f_name = f"entry-{i+1:003}.html"
+    context = {}
+    context['f_name'] = f_name
     item = {
         key: {
             'label': labels[key],
@@ -109,22 +112,36 @@ for i, object in enumerate(df.to_dict(orient='records')):
         }
         for key, value in object.items()
     }
+    for key, value in object.items():
+        if labels[key] in M2M.keys():
+            new_key = key.replace('-', '_')
+            matches = []
+            for x in value.split(';'):
+                col_name = M2M[labels[key]]
+                lookup_value = x.strip()
+                m2m_value = get_matching_row(inst_df, col_name, lookup_value)
+                match_item = {
+                    slugify(mkey).replace('-', '_'): {
+                        'label': mkey,
+                        'data': mvalue
+                    }
+                    for mkey, mvalue in m2m_value.items()
+                }
+                matches.append(match_item)
+            context[new_key] = matches
+    context["object"] = item
     previous_entry = None
     next_entry = None
     if i > 0:
         previous_entry = f"entry-{i:003}.html"
     if i + 2 <= len(df):
         next_entry = f"entry-{i+2:003}.html"
+    context["previous_entry"] = previous_entry
+    context["next_entry"] = next_entry
+    context["title"] = object['edition-name']
     with open(f"html/{f_name}", 'w') as f:
         f.write(
-            template.render(
-                {
-                    "object": item,
-                    "title": object['edition-name'],
-                    "previous_entry": previous_entry,
-                    "next_entry": next_entry
-                }
-            )
+            template.render(context)
         )
 facets = []
 for key, value in labels.items():

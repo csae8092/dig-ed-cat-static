@@ -51,3 +51,7 @@ NO_SEARCH_FIELDS = [
     'budget-rough',
     'ride-review',
 ]
+
+M2M = {
+    'Institution(s)': 'Institution Name',
+}

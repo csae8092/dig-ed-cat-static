@@ -58,3 +58,12 @@ def create_ts_documents(df, facet_fields):
                 doc[key] = row[key]
         documents.append(doc)
     return documents
+
+
+def get_matching_row(df, col_name, lookup_value):
+    cur_item = df[col_name] == lookup_value
+    try:
+        matching_rows = df[cur_item].to_dict(orient='records')[0]
+    except IndexError:
+        matching_rows = {}
+    return matching_rows
