@@ -18,13 +18,13 @@ client = typesense.Client(
 )
 
 result = client.collections["dig-ed-cat"].documents.search(
-            {
-                "q": "Saint Patrick's Confessio",
-                "query_by": "edition-name",
-                "per_page": 10,
-                "page": 1,
-            }
-        )
+    {
+        "q": "Saint Patrick's Confessio",
+        "query_by": "edition-name",
+        "per_page": 10,
+        "page": 1,
+    }
+)
 
 with open("hansi.json", "w") as f:
     json.dump(result, f)
