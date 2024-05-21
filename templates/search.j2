@@ -42,7 +42,7 @@ search.addWidgets([
         templates: {
           empty: 'No Hits',
           item: `
-              <h4><a href="{{ id }}">{{ edition-name }}</a></h4>
+              <h4><a href="entry-{{ id }}.html">{{ edition-name }}</a></h4>
               <h5><a href="{{ url }}"><span class="badge bg-primary">{{ project }}</span></a></h5>
               <div>
               {{#language}}
